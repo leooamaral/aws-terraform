@@ -10,19 +10,10 @@ resource "aws_instance" "bastion_host"{
     key_name = var.key_name
     vpc_security_group_ids = [aws_security_group.sg_default.id]
     subnet_id = aws_subnet.public_3.id
+    associate_public_ip_address = true
 
     tags = {
         Name = "bastion host"
-    }
-}
-
-resource "aws_eip" "bastion_eip" {
-    vpc = true
-    instance                  = aws_instance.bastion_host.id
-    depends_on                = [aws_internet_gateway.default]
-
-    tags = {
-        Name = "bastion_elastic_ip"
     }
 }
 
@@ -39,19 +30,10 @@ resource "aws_instance" "pub_1"{
     key_name = var.key_name
     vpc_security_group_ids = [aws_security_group.sg_default.id]
     subnet_id = aws_subnet.public_1.id
+    associate_public_ip_address = true
 
     tags = {
         Name = "Public 1 host"
-    }
-}
-
-resource "aws_eip" "pub_1" {
-    vpc = true
-    instance                  = aws_instance.pub_1.id
-    depends_on                = [aws_internet_gateway.default]
-    
-    tags = {
-        Name = "pub_1_elastic_ip"
     }
 }
 
@@ -66,19 +48,10 @@ resource "aws_instance" "pub_2"{
     key_name = var.key_name
     vpc_security_group_ids = [aws_security_group.sg_default.id]
     subnet_id = aws_subnet.public_2.id
+    associate_public_ip_address = true
 
     tags = {
         Name = "Public 2 host"
-    }
-}
-
-resource "aws_eip" "pub_2" {
-    vpc = true
-    instance                  = aws_instance.pub_2.id
-    depends_on                = [aws_internet_gateway.default]
-
-    tags = {
-        Name = "pub_2_ip"
     }
 }
 

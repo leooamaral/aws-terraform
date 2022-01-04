@@ -1,7 +1,7 @@
 provider "aws"{
     region = "us-east-1"
-    access_key  = "AKIAV7WCT6IBLFL2MYQM"
-    secret_key = "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"
+    access_key  = ""
+    secret_key = ""
 }
 
 ### VPC, INTERNET GATEWAY AND NAT GATEWAY###
